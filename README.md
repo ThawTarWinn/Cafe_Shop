@@ -1,4 +1,4 @@
-# Cafe_Shop
+# DemoS
 
 A new Flutter project.
 
