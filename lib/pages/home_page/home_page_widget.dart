@@ -482,7 +482,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   ),
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .matteBlack,
+                                                                      .terracotta,
                                                                   fontSize:
                                                                       15.0,
                                                                   letterSpacing:

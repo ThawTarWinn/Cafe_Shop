@@ -216,3 +216,14 @@ List<DrinkinfoStruct>? specialofferlist() {
 
   return drink;
 }
+
+double? caculateTotalCost(List<DrinkinfoStruct>? orderlist) {
+  // calcualte to total cost
+  if (orderlist == null || orderlist.isEmpty)
+    return 0.0; // Return 0 if the list is null or empty
+  double totalCost = 0.0; // Initialize total cost
+  for (var drink in orderlist) {
+    totalCost += drink.price * drink.qty; // Calculate total cost
+  }
+  return totalCost; // Return the total cost
+}

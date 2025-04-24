@@ -140,8 +140,8 @@ class _DrinkDetailsPageWidgetState extends State<DrinkDetailsPageWidget> {
                                   borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(0.0),
                                     bottomRight: Radius.circular(0.0),
-                                    topLeft: Radius.circular(25.0),
-                                    topRight: Radius.circular(25.0),
+                                    topLeft: Radius.circular(0.0),
+                                    topRight: Radius.circular(0.0),
                                   ),
                                 ),
                                 child: ClipRRect(
@@ -164,13 +164,13 @@ class _DrinkDetailsPageWidgetState extends State<DrinkDetailsPageWidget> {
                                   color: Colors.transparent,
                                   elevation: 3.0,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(35.0),
+                                    borderRadius: BorderRadius.circular(0.0),
                                   ),
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color:
                                           FlutterFlowTheme.of(context).offWhite,
-                                      borderRadius: BorderRadius.circular(35.0),
+                                      borderRadius: BorderRadius.circular(0.0),
                                     ),
                                     child: SingleChildScrollView(
                                       child: Column(
@@ -398,29 +398,33 @@ class _DrinkDetailsPageWidgetState extends State<DrinkDetailsPageWidget> {
                                                   ),
                                                 ),
                                               ),
-                                              Expanded(
-                                                child: Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          1.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsets.all(15.0),
-                                                    child: Container(
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: wrapWithModel(
-                                                        model: _model
-                                                            .limitedContainerComponentModel,
-                                                        updateCallback: () =>
-                                                            safeSetState(() {}),
-                                                        child:
-                                                            LimitedContainerComponentWidget(),
+                                              if (_model
+                                                      .drinkdetail?.isspecial ==
+                                                  true)
+                                                Expanded(
+                                                  child: Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsets.all(20.0),
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: wrapWithModel(
+                                                          model: _model
+                                                              .limitedContainerComponentModel,
+                                                          updateCallback: () =>
+                                                              safeSetState(
+                                                                  () {}),
+                                                          child:
+                                                              LimitedContainerComponentWidget(),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
                                                 ),
-                                              ),
                                             ],
                                           ),
                                           Padding(
@@ -600,7 +604,7 @@ class _DrinkDetailsPageWidgetState extends State<DrinkDetailsPageWidget> {
                                                                           .titleSmall
                                                                           .fontStyle,
                                                                     ),
-                                                                    color: _model.drinkdetail?.qty ==
+                                                                    color: _model.drinkdetail?.cupsize ==
                                                                             1
                                                                         ? FlutterFlowTheme.of(context)
                                                                             .offWhite
@@ -762,7 +766,7 @@ class _DrinkDetailsPageWidgetState extends State<DrinkDetailsPageWidget> {
                                                                           .titleSmall
                                                                           .fontStyle,
                                                                     ),
-                                                                    color: _model.drinkdetail?.qty ==
+                                                                    color: _model.drinkdetail?.cupsize ==
                                                                             3
                                                                         ? FlutterFlowTheme.of(context)
                                                                             .offWhite
@@ -884,11 +888,6 @@ class _DrinkDetailsPageWidgetState extends State<DrinkDetailsPageWidget> {
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
-                                                  _model
-                                                      .updateDrinkdetailStruct(
-                                                    (e) => e..qty = 1,
-                                                  );
-                                                  safeSetState(() {});
                                                   FFAppState().addToDrinkcart(
                                                       _model.drinkdetail!);
                                                   safeSetState(() {});
