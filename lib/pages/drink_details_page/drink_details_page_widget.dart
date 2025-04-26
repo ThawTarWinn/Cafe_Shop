@@ -994,7 +994,7 @@ class _DrinkDetailsPageWidgetState extends State<DrinkDetailsPageWidget> {
                                                                 AlignmentDirectional(
                                                                     0.0, 1.0),
                                                             child: Text(
-                                                              '\$12.5',
+                                                              '\$${_model.drinkdetail?.price.toString()}',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium

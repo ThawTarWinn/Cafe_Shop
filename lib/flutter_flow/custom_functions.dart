@@ -173,6 +173,28 @@ List<DrinkinfoStruct> drinklist() {
       totalSales: 95,
       isspecial: false,
     ),
+    DrinkinfoStruct(
+      id: 1,
+      title: "Geisha Coffee",
+      price: 1.5,
+      promotioninfo: "Buy 3 Get 5",
+      image:
+          "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/demo-jr9rko/assets/xwvhn0jw7kfv/geishacoffee.png",
+      ingredients: ["Coffee Beans", "Water"],
+      totalSales: 200,
+      isspecial: true,
+    ),
+    DrinkinfoStruct(
+      id: 2,
+      title: "Yuzu Lemon Iced Tea",
+      price: 1.8,
+      promotioninfo: "Cutie of the Month",
+      image:
+          "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/demo-jr9rko/assets/9rh2zy4mllnm/acontentsyuzuice.jpg",
+      ingredients: ["Espresso", "Water"],
+      totalSales: 180,
+      isspecial: true,
+    ),
   ];
 
   return drink;
@@ -187,43 +209,46 @@ CategroiesStruct? filtercategories(String? catename) {
   );
 }
 
-List<DrinkinfoStruct>? specialofferlist() {
-  List<DrinkinfoStruct> drink = [
-    // Coffee
-    DrinkinfoStruct(
-      id: 1,
-      title: "Geisha Coffee",
-      price: 1.5,
-      promotioninfo: "Buy 3 Get 5",
-      image:
-          "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/demo-jr9rko/assets/xwvhn0jw7kfv/geishacoffee.png",
-      ingredients: ["Coffee Beans", "Water"],
-      totalSales: 200,
-      isspecial: false,
-    ),
-    DrinkinfoStruct(
-      id: 2,
-      title: "Yuzu Lemon Iced Tea",
-      price: 1.8,
-      promotioninfo: "Cutie of the Month",
-      image:
-          "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/demo-jr9rko/assets/9rh2zy4mllnm/acontentsyuzuice.jpg",
-      ingredients: ["Espresso", "Water"],
-      totalSales: 180,
-      isspecial: false,
-    ),
-  ];
-
-  return drink;
-}
-
-double? caculateTotalCost(List<DrinkinfoStruct>? orderlist) {
-  // calcualte to total cost
-  if (orderlist == null || orderlist.isEmpty)
-    return 0.0; // Return 0 if the list is null or empty
-  double totalCost = 0.0; // Initialize total cost
-  for (var drink in orderlist) {
-    totalCost += drink.price * drink.qty; // Calculate total cost
+CostStruct? caculateTotalCost(
+  List<DrinkinfoStruct>? orderlist,
+  bool? memberdiscount,
+) {
+// calcualte to total cost
+  if (orderlist == null || orderlist.isEmpty) {
+    return CostStruct(
+      subcost: 0.0,
+      discount: 0.0,
+      shippingfees: 0.0,
+      taxes: 0.0,
+      totalcost: 0.0,
+    );
   }
-  return totalCost; // Return the total cost
+
+  double subcost = 0.0;
+  for (var drink in orderlist) {
+    subcost += drink.price * drink.qty;
+  }
+
+  // Apply discount only if memberdiscount is true
+  double discount = memberdiscount == true ? subcost * 0.10 : 0.0;
+  double discountedSubtotal = subcost - discount;
+
+  double shippingfees = 5.0;
+  double taxes = 5.0;
+  double total = discountedSubtotal + shippingfees + taxes;
+
+  // Round to 2 decimal places
+  subcost = double.parse(subcost.toStringAsFixed(2));
+  discount =
+      double.parse((-discount).toStringAsFixed(2)); // show as negative value
+  shippingfees = double.parse(shippingfees.toStringAsFixed(2));
+  taxes = double.parse(taxes.toStringAsFixed(2));
+  total = double.parse(total.toStringAsFixed(2));
+  return CostStruct(
+    subcost: subcost,
+    discount: discount,
+    shippingfees: shippingfees,
+    taxes: taxes,
+    totalcost: total,
+  );
 }

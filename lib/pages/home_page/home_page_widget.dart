@@ -578,8 +578,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 25.0, 0.0),
                       child: Builder(
                         builder: (context) {
-                          final speciallist =
-                              functions.specialofferlist()?.toList() ?? [];
+                          final speciallist = functions
+                              .drinklist()
+                              .where((e) => e.isspecial == true)
+                              .toList();
 
                           return Container(
                             height: 300.0,
