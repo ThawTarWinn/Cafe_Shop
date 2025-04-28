@@ -211,6 +211,14 @@ class _OrderCartPageWidgetState extends State<OrderCartPageWidget>
                                                         .removeFromDrinkcart(
                                                             orderlistItem);
                                                     safeSetState(() {});
+                                                    _model.totalcost = functions
+                                                        .caculateTotalCost(
+                                                            FFAppState()
+                                                                .drinkcart
+                                                                .toList(),
+                                                            _model
+                                                                .memberdiscount);
+                                                    safeSetState(() {});
                                                   },
                                                   child: Icon(
                                                     Icons.close,

@@ -167,6 +167,7 @@ class _InitialPageWidgetState extends State<InitialPageWidget> {
                   cardDisplayCount: 1,
                   scale: 1.0,
                   threshold: 1.0,
+                  cardPadding: EdgeInsets.all(0.0),
                   backCardOffset: const Offset(0.1, 0.1),
                   allowedSwipeDirection: AllowedSwipeDirection.only(up: true),
                 ),
