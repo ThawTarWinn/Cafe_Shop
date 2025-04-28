@@ -233,8 +233,8 @@ CostStruct? caculateTotalCost(
   double discount = memberdiscount == true ? subcost * 0.10 : 0.0;
   double discountedSubtotal = subcost - discount;
 
-  double shippingfees = 5.0;
-  double taxes = 5.0;
+  double shippingfees = 0.0;
+  double taxes = 0.05;
   double total = discountedSubtotal + shippingfees + taxes;
 
   // Round to 2 decimal places

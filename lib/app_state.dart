@@ -49,4 +49,10 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInDrinkcart(int index, DrinkinfoStruct value) {
     drinkcart.insert(index, value);
   }
+
+  bool _isordering = false;
+  bool get isordering => _isordering;
+  set isordering(bool value) {
+    _isordering = value;
+  }
 }
