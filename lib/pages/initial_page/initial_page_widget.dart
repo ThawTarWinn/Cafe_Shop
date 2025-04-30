@@ -67,7 +67,7 @@ class _InitialPageWidgetState extends State<InitialPageWidget> {
                             child: Stack(
                               children: [
                                 ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderRadius: BorderRadius.circular(0.0),
                                   child: Image.asset(
                                     'assets/images/coffeeshop3.png',
                                     width: double.infinity,
