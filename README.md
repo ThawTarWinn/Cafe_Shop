@@ -5,4 +5,9 @@ A new Flutter project.
 ## Getting Started
 
 FlutterFlow projects are built to run on the Flutter _stable_ release.
-![Feng_Shui_Wallpaper](https://github.com/user-attachments/assets/1c85b217-c380-487d-9fe2-42f219c9d415) ![no-projects](https://github.com/user-attachments/assets/3b89300c-cb17-499e-98f1-227961b1244e)
+
+## Sample usage and output
+
+<img src="output_images/p1.jpg" alt="image" width="300"/> <img src="output_images/p2.jpg" alt="image" width="300"/> <img src="output_images/p3.jpg" alt="image" width="300"/>
+
+<img src="output_images/p4.jpg" alt="image" width="300"/> <img src="output_images/p5.jpg" alt="image" width="300"/> <img src="output_images/p6.jpg" alt="image" width="300"/>
